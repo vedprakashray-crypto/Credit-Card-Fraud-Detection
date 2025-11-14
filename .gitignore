@@ -1,0 +1,78 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+pip-wheel-metadata/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+venv.bak/
+.pyenv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Pytest
+.pytest_cache/
+
+# mypy
+.mypy_cache/
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Logs and databases
+*.log
+*.sqlite3
+
+# Streamlit
+.streamlit/
+
+# Environment / secrets
+.env
+.env.*
+
+# Model and large data artifacts
+models/
+*.pkl
+*.joblib
+*.npy
+data/*.npy
+data/*.csv
+
+# Temporary and cache files
+*.tmp
+*.cache
+
+# Wheel
+*.whl
+
+# Misc
+coverage.xml
+
+# Keep these if you intentionally commit notebooks or models
+# (remove the patterns above if you want to track them)
