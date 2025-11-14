@@ -58,7 +58,6 @@ Thumbs.db
 
 # Model and large data artifacts
 models/
-*.pkl
 *.joblib
 *.npy
 data/*.npy
