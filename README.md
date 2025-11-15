@@ -78,11 +78,3 @@ credit-card-fraud-detection/
    streamlit run app.py
    ```
 
-## Glass Morphism UI
-Glass morphism is a modern design trend that creates a "frosted glass" effect. It uses:
-- Semi-transparent backgrounds
-- Backdrop filters for blur effects
-- Subtle borders and shadows
-- Rounded corners
-
-This creates a sleek, modern look that feels futuristic and elegant.
