@@ -2,6 +2,7 @@ import streamlit as st
 import numpy as np
 import joblib
 import pandas as pd
+import altair as alt
 
 # Load the trained model and scaler
 model = joblib.load('fraud_detection_model.pkl')
@@ -169,6 +170,50 @@ if st.button("🔍 Analyze Transaction"):
         </div>
         """, unsafe_allow_html=True)
 
+# Model Performance Comparison Section
+st.markdown("""
+<div class="glass-container">
+    <h3>📊 Model Performance Comparison</h3>
+</div>
+""", unsafe_allow_html=True)
 
-
-
+try:
+    # Load model comparison data
+    comparison_df = pd.read_csv('model_comparison.csv')
+    
+    # Display the table
+    st.dataframe(comparison_df.style.highlight_max(axis=0), use_container_width=True)
+    
+    # Create comparison charts
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.subheader("Accuracy vs Precision")
+        chart_data = comparison_df[['Model', 'Accuracy', 'Precision']].set_index('Model')
+        st.bar_chart(chart_data, color=['#00ff00', '#0099ff'])
+    
+    with col2:
+        st.subheader("Recall vs F1-Score")
+        chart_data = comparison_df[['Model', 'Recall', 'F1-Score']].set_index('Model')
+        st.bar_chart(chart_data, color=['#ff6b6b', '#ffd93d'])
+    
+    # Overall performance radar-like view
+    st.subheader("Overall Model Performance")
+    melted_df = comparison_df.melt(id_vars=['Model'], var_name='Metric', value_name='Score')
+    chart = alt.Chart(melted_df).mark_bar().encode(
+        x='Model:N',
+        y='Score:Q',
+        color='Metric:N',
+        xOffset='Metric:N'
+    ).properties(
+        width=700,
+        height=400
+    )
+    st.altair_chart(chart, use_container_width=True)
+    
+except FileNotFoundError:
+    st.markdown("""
+    <div class="glass-container">
+        <p>Model comparison data not available. Please run the training script first.</p>
+    </div>
+    """, unsafe_allow_html=True)
